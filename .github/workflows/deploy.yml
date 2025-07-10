@@ -21,7 +21,7 @@ jobs:
       PORT: 8080
     services:
       mongodb:
-        image: mongo8.0.0-noble
+        image: mongo:8.0.0-noble
         env:
           MONGO_INITDB_ROOT_USERNAME: alex
           MONGO_INITDB_ROOT_PASSWORD: 1234

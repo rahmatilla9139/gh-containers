@@ -14,11 +14,17 @@ jobs:
     container:
       image: node:22-alpine
     env:
-      MONGODB_CONNECTION_PROTOCOL: mongodb+srv
-      MONGODB_CLUSTER_ADDRESS: cluster0.ngywfuw.mongodb.net
-      MONGODB_USERNAME: ${{ secrets.MONGODB_USERNAME }}
-      MONGODB_PASSWORD: ${{ secrets.MONGODB_PASSWORD }}
+      MONGODB_CONNECTION_PROTOCOL: mongodb # mongodb+srv
+      MONGODB_CLUSTER_ADDRESS: mongodb # cluster0.ngywfuw.mongodb.net
+      MONGODB_USERNAME: alex # ${{ secrets.MONGODB_USERNAME }}
+      MONGODB_PASSWORD: 1234 # ${{ secrets.MONGODB_PASSWORD }}
       PORT: 8080
+    services:
+      mongodb:
+        image: mongo8.0.0-noble
+        env:
+          MONGO_INITDB_ROOT_USERNAME: alex
+          MONGO_INITDB_ROOT_PASSWORD: 1234
     steps:
       - name: Get Code
         uses: actions/checkout@v3

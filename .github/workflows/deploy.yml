@@ -10,20 +10,20 @@ env:
 jobs:
   test:
     environment: testing
-    runs-on: self-hosted
-    # container:
-    #   image: node:22-alpine
+    runs-on: ubuntu-latest
+    container:
+      image: node:22-alpine
     env:
       MONGODB_CONNECTION_PROTOCOL: mongodb # mongodb+srv
-      MONGODB_CLUSTER_ADDRESS: localhost:27017 # cluster0.ngywfuw.mongodb.net
+      MONGODB_CLUSTER_ADDRESS: mongodb # cluster0.ngywfuw.mongodb.net
       MONGODB_USERNAME: alex # ${{ secrets.MONGODB_USERNAME }}
       MONGODB_PASSWORD: 1234 # ${{ secrets.MONGODB_PASSWORD }}
       PORT: 8080
     services:
       mongodb:
         image: mongo:8.0.0-noble
-        ports:
-          - 27017:27017
+        # ports:
+        #   - 27017:27017
         env:
           MONGO_INITDB_ROOT_USERNAME: alex
           MONGO_INITDB_ROOT_PASSWORD: 1234
